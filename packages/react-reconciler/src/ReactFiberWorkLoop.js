@@ -333,6 +333,7 @@ let executionContext: ExecutionContext = NoContext;
 // The root we're working on
 let workInProgressRoot: FiberRoot | null = null;
 // The fiber we're working on
+// INFO：工作的rootFiber
 let workInProgress: Fiber | null = null;
 // The lanes we're rendering
 let workInProgressRootRenderLanes: Lanes = NoLanes;
@@ -736,6 +737,7 @@ export function peekDeferredLane(): Lane {
   return workInProgressDeferredLane;
 }
 
+// 开始更新
 export function scheduleUpdateOnFiber(
   root: FiberRoot,
   fiber: Fiber,
@@ -2914,7 +2916,7 @@ type SuspendedCommitReason = 0 | 1 | 2;
 const IMMEDIATE_COMMIT = 0;
 const SUSPENDED_COMMIT = 1;
 const THROTTLED_COMMIT = 2;
-
+// INFO：树的切换
 function commitRoot(
   root: FiberRoot,
   recoverableErrors: null | Array<CapturedValue<mixed>>,
